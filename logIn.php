@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/index.css" type="text/css">
+<link rel="stylesheet" href="/css/login.css" type="text/css">
 <?php $title = 'Notre site web'; ?>  <!-- Debut du template -->
 
 <?php ob_start(); ?>
