@@ -1,3 +1,26 @@
 h1 {
     color: blue;
 }
+
+#signin
+{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    background-color: #229A17;
+    margin: auto;
+    margin-top: 3%;
+    height: 80%;
+    border-radius: 35px;
+}
+
+#form{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 90%;
+    align-items: center;
+}
+

@@ -36,12 +36,13 @@
         $user_email = $_POST['email'];
         $user_pwd = $_POST['pwd'];
         
-        $bdd_email = 'SELECT UserEmail, UserPassword FROM user';
-        $test = $conn->prepare($bdd_email);
-        $test->execute([]);
-        $test2 = $test->fetchAll();
+        $bdd_verif = 'SELECT UserEmail, UserPassword FROM user';
+        $sql = $conn->prepare($bdd_verif);
+        $sql->execute([]);
+        $arr = $sql->fetchAll();
 
-        print_r($test2);
+        print_r($arr[0][0].'\n') ;
+        print_r($arr[0][1]);
     }
     
 
