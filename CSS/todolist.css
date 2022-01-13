@@ -1,22 +1,18 @@
 body {
-    background-color: lightgreen;
-}
-
-.main-body{
+  background-color: lightgreen;
 }
 
 .todo-item {
-    position: flex;
-    background-color: white;
-    border-radius: 10px;
-    width: 20%;
-    height: 10%;
-    margin-bottom: 5%;
-    margin-left: 40%;
-
+  position: flex;
+  background-color: white;
+  border-radius: 10px;
+  width: 20%;
+  height: 10%;
+  margin-bottom: 5%;
+  margin-left: 40%;
 }
 
 .todo-item h2 {
-    font-size: auto;
-    text-align: center;
+  font-size: auto;
+  text-align: center;
 }

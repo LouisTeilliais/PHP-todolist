@@ -6,7 +6,6 @@
 <?php ob_start(); ?>
 <h1>Page TO DO LIST</h1>
 
-
 <?php 
 $todolist = $conn->prepare("SELECT * FROM todolist"); 
 $todolist->execute();
@@ -38,7 +37,7 @@ if(isset($_POST['create'])){
     $text = $_POST['input_text'];
 
     if(empty($text)){
-        $message = "Veuillez mettre du text";
+        $message = "Please enter a value";
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     } else{
         $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName) VALUE(?)");
