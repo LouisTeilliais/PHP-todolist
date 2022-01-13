@@ -6,10 +6,9 @@
 
 
 <?php ob_start(); ?>
-<h1>Page Sign IN</h1>
     <div id="signin">
         <h2>Sign In</h2>
-        <form method="POST" action="signin.php">
+        <form method="POST" action="signin.php" id="form">
             <input type="text" placeholder="FirstName" name="firstname" required>
             <input type="text" placeholder="LastName" name="lastname" required>
             <input type="email" placeholder="Email" name="email" required>
@@ -24,43 +23,18 @@
 
 <?php
 
-
-// function CreateUser($firstname, $lastname, $email, $password){
-//     $result = $conn->prepare("INSERT INTO user (UserFirstName, UserLastName, UserEmail, UserPassword) VALUES ($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["pwd"])");
-//     $result->execute();
-// }
-
 if(isset($_POST['submit'])){
     
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $password = $_POST['pwd'];
+    $password = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
 
     try{
-        $result = $conn->prepare("INSERT INTO user (UserFirstName, UserLastName, UserEmail, UserPassword) VALUES ($firstname, $lastname, $email, $password)");
-        $result->execute();
+        $result = $conn->prepare("INSERT INTO user (UserFirstName, UserLastName, UserEmail, UserPassword) VALUES (?, ?, ?, ?);");
+        $result->execute(array($firstname, $lastname, $email, $password));
     }catch(PDOException $e){
         echo $e;
     }
 
 }
-
-
-
-
-
-// example from w3school
-
-// $servername = "localhost";
-// $username = "username";
-// $mdp = "password";
-
-// // Create connection
-// $conn = new mysqli($servername, $username, $password);
-
-// // Check connection
-// if ($conn->connect_error) {
-//   die("Connection failed: " . $conn->connect_error);
-// }
-// echo "Connected successfully"; -->
