@@ -5,5 +5,4 @@
     <a href="tasks.php" class="links">Tasks</a>
     <a href="logIn.php" class="links">LogIn</a>
     <a href="signIn.php" class="links">SignIn</a>
-
 </div>
