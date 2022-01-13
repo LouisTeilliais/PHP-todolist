@@ -1,3 +1,4 @@
+<?php require('db_connect.php'); ?>
 <link rel="stylesheet" href="/css/signin.css" type="text/css">
 <link rel="stylesheet" href="/css/index.css" type="text/css">
 
@@ -9,11 +10,11 @@
     <div id="signin">
         <h2>Sign In</h2>
         <form method="POST" action="signin.php">
-            <input type="text" placeholder="FirstName" name="firstname">
-            <input type="text" placeholder="LastName" name="lastname">
-            <input type="email" placeholder="Email" name="email">
-            <input type="password" placeholder="Password" name="pwd">
-            <input type="submit" value="Sign in">  
+            <input type="text" placeholder="FirstName" name="firstname" required>
+            <input type="text" placeholder="LastName" name="lastname" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="pwd" required>
+            <input type="submit" value="Sign in" name="submit">  
         </form>
     </div>
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
@@ -22,6 +23,33 @@
 
 
 <?php
+
+
+// function CreateUser($firstname, $lastname, $email, $password){
+//     $result = $conn->prepare("INSERT INTO user (UserFirstName, UserLastName, UserEmail, UserPassword) VALUES ($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["pwd"])");
+//     $result->execute();
+// }
+
+if(isset($_POST['submit'])){
+    
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $password = $_POST['pwd'];
+
+    try{
+        $result = $conn->prepare("INSERT INTO user (UserFirstName, UserLastName, UserEmail, UserPassword) VALUES ($firstname, $lastname, $email, $password)");
+        $result->execute();
+    }catch(PDOException $e){
+        echo $e;
+    }
+
+}
+
+
+
+
+
 // example from w3school
 
 // $servername = "localhost";
