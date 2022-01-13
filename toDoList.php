@@ -6,7 +6,6 @@
 <?php ob_start(); ?>
 <h1>Page TO DO LIST</h1>
 
-
 <?php 
 $todolist = $conn->prepare("SELECT * FROM todolist"); 
 $todolist->execute();
@@ -15,9 +14,9 @@ $todos = $todolist->fetchAll();
 
 <div class="main-body">
     <div class="add-post">
-        <form action="add.php" method="POST" autocomplete="off">
+        <form action="toDoList.php" method="POST" autocomplete="off">
             <input type="text" name="input_text"/> 
-            <button type="submit" class="btn"> + Create new</button>
+            <button type="submit" class="btn" name="create"> + Create new</button>
         </form>
     </div>
     <?php foreach($todos as $todo) { ?>
@@ -31,8 +30,31 @@ $todos = $todolist->fetchAll();
         </div>
     <?php } ?>
 <div>
+    
+<?php
 
+if(isset($_POST['create'])){
 
+    $text = $_POST['input_text'];
+
+    if(empty($text)){
+        $message = "Please enter a value";
+        echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+    } else{
+        $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName) VALUE(?)");
+        $insert = $insertText->execute([$text]);
+
+        if($insert){
+            header('Location: http://php-todolist/toDoList.php');
+        } else {
+            header('Location: http://php-todolist/toDoList.php');
+            $message = "Error votre text n'a pas été envoyé !";
+            echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
+        }
+    }
+} 
+
+?>
 
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
 
