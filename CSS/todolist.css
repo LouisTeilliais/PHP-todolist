@@ -1,0 +1,22 @@
+body {
+    background-color: lightgreen;
+}
+
+.main-body{
+}
+
+.todo-item {
+    position: flex;
+    background-color: white;
+    border-radius: 10px;
+    width: 20%;
+    height: 10%;
+    margin-bottom: 5%;
+    margin-left: 40%;
+
+}
+
+.todo-item h2 {
+    font-size: auto;
+    text-align: center;
+}
