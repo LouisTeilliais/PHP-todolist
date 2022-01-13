@@ -22,9 +22,10 @@ $todos = $todolist->fetchAll();
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
+        <input type="checkbox">
         <form action="delete.php" method="POST">
-            <input type="checkbox">
-            <button type="submit" name="delete" class="btn">Delete</button>
+            <input type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
+            <input type="submit" value="Delete">
             <h2><?php echo $todo['ToDoListName'] ?></h2>
         </form>
         </div>

@@ -14,8 +14,3 @@ try {
     echo "Connection failed: " . $e->getMessage();
   }
 
-$deleteList = $conn->prepare("DELETE FROM `todolist` WHERE `todolist`.`ToDoListId` =:ToDoListId");
-$deleteList->execute(
-  "ToDoListId" => 4
-);
-
