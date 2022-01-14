@@ -7,13 +7,13 @@
 
 <?php ob_start(); ?>
     <div id="signin">
-        <h2>Sign In</h2>
+        <h1>Sign In</h1>
         <form method="POST" action="signin.php" id="form">
-            <input type="text" placeholder="FirstName" name="firstname" required>
-            <input type="text" placeholder="LastName" name="lastname" required>
-            <input type="email" placeholder="Email" name="email" required>
-            <input type="password" placeholder="Password" name="pwd" required>
-            <input type="submit" value="Sign in" name="submit">  
+            <input type="text" placeholder="FirstName" class="input" name="firstname" required>
+            <input type="text" placeholder="LastName" class="input" name="lastname" required>
+            <input type="email" placeholder="Email" class="input" name="email" required>
+            <input type="password" placeholder="Password" class="input" name="pwd" required>
+            <input type="submit" value="Sign in" name="submit" class="submit">  
         </form>
     </div>
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
