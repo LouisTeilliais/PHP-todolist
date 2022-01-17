@@ -1,5 +1,5 @@
 <?php require('db_connect.php'); ?>
-<link rel="stylesheet" href="/css/index.css" type="text/css">
+<link rel="stylesheet" href="/CSS/index.css" type="text/css">
 <?php
 
 // $user_session = "123456789dzqgerdhgezs";

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/index.css" type="text/css">
+<link rel="stylesheet" href="/CSS/index.css" type="text/css">
 <?php $title = 'To Do List'; ?>
 
 <?php ob_start(); ?> <!-- Debut du template -->

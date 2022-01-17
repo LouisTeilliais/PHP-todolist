@@ -1,6 +1,6 @@
 <?php require('db_connect.php'); ?>
 
-<link rel="stylesheet" href="/css/todolist.css" type="text/css">
+<link rel="stylesheet" href="/CSS/todolist.css" type="text/css">
 <?php $title = 'Notre site web'; ?>  <!-- Debut du template -->
 
 <?php ob_start(); ?>
@@ -15,18 +15,21 @@ $todos = $todolist->fetchAll();
 <div class="main-body">
     <div class="add-post">
         <form action="toDoList.php" method="POST" autocomplete="off">
-            <input type="text" name="input_text"/> 
+            <input placeholder="Enter text" type="text" name="input_text"/> 
             <button type="submit" class="btn" name="create"> + Create new</button>
         </form>
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
-        <input type="checkbox">
-        <form action="delete.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
-            <input type="submit" value="Delete">
-            <h2><?php echo $todo['ToDoListName'] ?></h2>
-        </form>
+            <form class="message" action="delete.php" method="POST">
+                <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
+                <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
+                <input class="check" type="checkbox">
+                <p><?php echo $todo['ToDoListName'] ?></p>
+            </form>
+            <form class="taches" action="tasks.php" method="POST">
+                <button type="submit" class="btn" name="tache"> + Ajout tâches</button>
+            </form>
         </div>
     <?php } ?>
 <div>
