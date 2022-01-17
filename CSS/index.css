@@ -1,3 +1,41 @@
 body {
     background-color: lightgreen;
 }
+
+#menu
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    margin-top: 5%;
+}
+
+.title
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #229A17;
+    width: 25%;
+    border-radius: 40px;
+}
+
+h1
+{
+    color: white;
+    font-family: Roboto;
+}
+
+button
+{
+    background-color: #229A17;
+    border: none;
+    width: 15%;
+    height: 15%;
+    border-radius: 40px;
+    color: white;
+    font-size: xx-large;
+
+}

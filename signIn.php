@@ -1,6 +1,5 @@
 <?php require('db_connect.php'); ?>
 <link rel="stylesheet" href="/css/signin.css" type="text/css">
-<link rel="stylesheet" href="/css/index.css" type="text/css">
 
 <?php $title = 'Notre site web'; ?>  <!-- Debut du template -->
 
