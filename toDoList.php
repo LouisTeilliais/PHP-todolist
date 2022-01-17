@@ -4,7 +4,6 @@
 <?php $title = 'Notre site web'; ?>  <!-- Debut du template -->
 
 <?php ob_start(); ?>
-<h1>Page TO DO LIST</h1>
 
 <?php 
 $todolist = $conn->prepare("SELECT * FROM todolist"); 
@@ -14,6 +13,7 @@ $todos = $todolist->fetchAll();
 
 <div class="main-body">
     <div class="add-post">
+        <h1>TO DO LIST</h1>
         <form action="toDoList.php" method="POST" autocomplete="off">
             <input placeholder="Enter text" type="text" name="input_text"/> 
             <button type="submit" class="btn" name="create"> + Create new</button>
