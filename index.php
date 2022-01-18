@@ -9,8 +9,8 @@
         <div class="title">
             <h1>TO DO LIST PROJECT</h1>
         </div>
-        <button onclick="window.location='signin.php'" >Login</button>
-        <button onclick="window.location='logIn.php'" >Sign in</button>
+        <button onclick="window.location='login.php'" >Login</button>
+        <button onclick="window.location='signin.php'" >Sign in</button>
     </div>
 
 
