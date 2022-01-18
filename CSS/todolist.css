@@ -2,18 +2,44 @@ body {
   background-color: lightgreen;
 }
 
-.todo-item {
+.add-post {
   position: flex;
-  background-color: white;
+  background-color: #229a17;
   border-radius: 10px;
-  width: 20%;
-  height: 10%;
+  width: 60%;
+  height: 16%;
   margin-bottom: 5%;
+  margin-left: 20%;
+}
+
+.add-post h1 {
   margin-left: 40%;
   background-color: #229a17;
 }
 
-.todo-item h2 {
-  font-size: auto;
+.todo-item .message {
+  background-color: white;
+  border-radius: 10px;
+  width: 70%;
+  height: 80%;
+  margin-left: 15%;
+  border-top: 1px;
+}
+
+.todo-item p {
+  font-size: 150%;
   text-align: center;
+  margin-top: 0%;
+}
+
+.todo-item .delete {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.todo-item .check {
+  position: relative;
+  margin-left: 110%;
+  transform: scale(3);
+  vertical-align: middle;
 }

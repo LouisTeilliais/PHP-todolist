@@ -1,26 +1,49 @@
-h1 {
-    color: blue;
+body {
+  background-color: lightgreen;
 }
 
-#signin
-{
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    flex-direction: column;
-    width: 30%;
-    background-color: #229A17;
-    margin: auto;
-    margin-top: 3%;
-    height: 80%;
-    border-radius: 35px;
+#signin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  background-color: #229a17;
+  margin: auto;
+  margin-top: 3%;
+  height: 80%;
+  border-radius: 35px;
 }
 
-#form{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 90%;
-    align-items: center;
+#form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90%;
+  align-items: center;
+  width: 100%;
 }
 
+.input {
+  width: 70%;
+  height: 12%;
+  background-color: lightgreen;
+  border-radius: 40px;
+  color: black;
+  font-size: x-large;
+  padding-left: 5%;
+}
+
+.input::placeholder {
+  color: black;
+  font-size: x-large;
+  padding-left: 5%;
+}
+
+.submit {
+  background-color: lightgreen;
+  width: 45%;
+  height: 10%;
+  border-radius: 40px;
+  margin-bottom: 5%;
+  font-size: x-large;
+}

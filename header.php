@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/header.css" type="text/css">
+<link rel="stylesheet" href="/CSS/header.css" type="text/css">
 <div class="navbar">
     <a href="/" class="links"> Home </a>
     <a href="toDoList.php" class="links">To do list</a>

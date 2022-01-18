@@ -1,0 +1,21 @@
+body
+{
+    background-color: lightgreen;
+}
+
+.task_page
+{
+    display: flex;
+    width: 60%;
+    background-color: #229A17;
+    margin: auto;
+    margin-top: 3%;
+    height: 80%;
+    border-radius: 35px;
+}
+
+.task_page h1{
+    margin: auto;
+    margin-top: 5%;
+  }
+
