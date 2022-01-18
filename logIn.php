@@ -55,7 +55,8 @@
             }
         }
         if ($connected == false)  {
-            echo "Wrong password or e-mail ! Please verify";
+            $error = "Wrong password or e-mail ! Please verify";
+            echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
         }  
         
     }
