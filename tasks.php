@@ -6,7 +6,7 @@
 <?php ob_start(); ?>
 
 <?php 
-$tasklist = $conn->prepare("SELECT * FROM task"); 
+$tasklist = $conn->prepare("SELECT * FROM task WHERE ToDoListId= 95"); 
 $tasklist->execute();
 $tasks = $tasklist->fetchAll();
 ?>
@@ -21,8 +21,8 @@ $tasks = $tasklist->fetchAll();
     </div>
     <div class="task_item">
         <?php foreach($tasks as $task) { ?>
-            <form class="message" action="delete.php" method="POST">
-                    <input class="id" type="hidden" name="id" value="<?php echo $task['ToDoListId'] ?>"/>
+            <form class="message" action="deleteTask.php" method="POST">
+                    <input class="id" type="hidden" name="id" value="<?php echo $task['TaskId'] ?>"/>
                     <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
                     <input class="check" type="checkbox">
                     <p><?php echo $task['TaskName'] ?></p>
@@ -36,19 +36,18 @@ $tasks = $tasklist->fetchAll();
 if(isset($_POST['add'])){
 
     $addtask = $_POST['input_task'];
-    $findId = $_POST['input_task'];
 
     if(empty($addtask)){
         $message = "Please enter a task";
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     } else{
-        $insertText = $conn->prepare("INSERT INTO task(TaskName, TaskStatut, todolist(ToDoListId)) VALUE(?, ?, ?) INNER JOIN todolist ON task.ToDoListId = todolist.ToDoListId");
-        $insertTask = $insertText->execute([$addtask, "active", 1]);
+        $insertText = $conn->prepare("INSERT INTO task(TaskName, TaskStatut, ToDoListId) VALUE(?, ?, ?)");
+        $insertTask = $insertText->execute([$addtask, "active", 95]);
 
         if($insertTask){
-            header("tasks.php");
+            header('Location: http://php-todolist/tasks.php');
         } else {
-            header("tasks.php");
+            header('Location: http://php-todolist/tasks.php');
             $message = "Error votre text n'a pas été envoyé !";
             echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
         }
