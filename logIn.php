@@ -1,57 +1,78 @@
 <?php require('db_connect.php'); ?>
-<link rel="stylesheet" href="/CSS/index.css" type="text/css">
+<link rel="stylesheet" href="/css/login.css" type="text/css">
 <?php
 
-// $user_session = "123456789dzqgerdhgezs";
 
-// setcookie(
-//         'user_session',
-//         $user_session,
-//         [
-//             'expires' => time() + 3600,
-//             'path' => "/",
-//         ]
-//     );
-// ?>
+?>
 
 <?php $title = 'PHP TO DO LIST'; ?>  <!-- Debut du template -->
 
 <?php ob_start();?>
 
-<h1>Page Login</h1>
 <body>
 
     <div id="login">
-        <h2>Login</h2>
+        <h1>Login</h1>
         <form method="POST" action="login.php">
             <input type="email" placeholder="Email" name="email">
             <input type="password" placeholder="Password" name="pwd">
-            <input type="submit" value="Sign in" name="submit">  
+            <input class="B_login" type="submit" value="Login" name="submit">  
+            <!-- <input type="submit" value="Disconnect" name="disconnect">  -->
         </form>
+         
     </div>
     <?php
     
     if(isset($_POST['submit'])){
 
-        $user_email = $_POST['email'];
-        $user_pwd = $_POST['pwd'];
-        
         $bdd_verif = 'SELECT UserEmail, UserPassword FROM user';
         $sql = $conn->prepare($bdd_verif);
         $sql->execute([]);
         $arr = $sql->fetchAll();
+        $rand_token = openssl_random_pseudo_bytes(16);
+        $token = bin2hex($rand_token);
 
-        print_r($arr[0][0].'\n') ;
-        print_r($arr[0][1]);
-    }
     
+        $user_email = $_POST['email'];
+        $user_pwd = $_POST['pwd'];
+        $connected = false; 
 
-    // if(isset($_COOKIE['user_session'])){
-    //     echo 'Hello ' .$_COOKIE['user_session'];
-    // }else{
-    //         echo 'Please connect';
-    //     }
-    // ?>
+        for ( $i = 0; $i < count($arr); $i++){
+           
+            if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
+                
+                echo "Connected";
+                $connected = true;
+
+                setcookie(
+                        'user_session',
+                        "$token",
+                        [
+                            'expires' => time() + 3600,
+                            'path' => "/",
+                        ]
+                );
+            }
+        }
+        if ($connected == false)  {
+            echo "Wrong password or e-mail ! Please verify";
+        }  
+        
+    }
+
+
+    if(isset($_POST['disconnect'])){
+
+        setcookie('user_session',"", [
+                'expires' => time() - 3600,
+            ]
+         );
+    }
+
+    // if (isset($_COOKIE['user_session'])){
+    //     header('Location:http://php-todolist/toDoList.php');
+    // }
+ ?>
 
 
 </body>

@@ -4,7 +4,7 @@ body {
 
 .add-post {
   position: flex;
-  background-color: #229A17;
+  background-color: #229a17;
   border-radius: 10px;
   width: 60%;
   height: 16%;
@@ -12,37 +12,12 @@ body {
   margin-left: 20%;
 }
 
-.add-post h1{
+.add-post h1 {
   margin-left: 40%;
-  margin-top: 5%;
+  background-color: #229a17;
 }
 
-.add-post .btn {
-  width: 20%;
-  height: 30%;
-  border-radius: 10px 10px;
-  background-color:lightgreen;
-}
-
-.add-post input{
-  width: 65%;
-  height: 30%;
-  border-radius: 10px 10px;
-  margin-left: 5%;
-}
-
-.todo-item {
-  position: flex;
-  background-color: #229A17;
-  border-radius: 10px;
-  width: 50%;
-  height: 16%;
-  margin-left: 25%;
-  padding: 30px 10px 10px 10px;
-  margin-top: 5%;
-}
-
-.todo-item .message{
+.todo-item .message {
   background-color: white;
   border-radius: 10px;
   width: 70%;
@@ -65,7 +40,6 @@ body {
 .todo-item .check {
   position: relative;
   margin-left: 110%;
-  transform : scale(3);
+  transform: scale(3);
   vertical-align: middle;
-  
 }
