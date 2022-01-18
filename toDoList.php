@@ -21,9 +21,9 @@ $todos = $todolist->fetchAll();
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
-            <form class="message" action="toDoList.php" method="POST">
+            <form class="message" action="delete.php" method="POST">
                 <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
-                <input class="delete" type="image" src="images/poubelle.png" height="30" width="30" name="delete"/>
+                <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
                 <input class="check" type="checkbox">
                 <p><?php echo $todo['ToDoListName'] ?></p>
             </form>
@@ -48,15 +48,14 @@ if(isset($_POST['create'])){
         $insert = $insertText->execute([$text]);
 
         if($insert){
-            header('toDoList.php');
+            header('Location: http://phptodolist/toDoList.php');
         } else {
-            header('toDoList.php');
+            header('Location: http://phptodolist/toDoList.php');
             $message = "Error votre text n'a pas été envoyé !";
             echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
         }
     }
 } 
-
 
 ?>
 
