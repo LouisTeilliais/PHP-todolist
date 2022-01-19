@@ -8,9 +8,8 @@ require('toDoList.php')
 <?php ob_start(); ?>
 
 <?php 
-$listId = $id;
-$tasklist = $conn->prepare("SELECT * FROM task WHERE ToDoListId =" . $listId . "\"");
-$tasklist->execute(array([]));
+$tasklist = $conn->prepare("SELECT * FROM task WHERE ToDoListId = ?");
+$tasklist->execute([$listId]);
 $tasks = $tasklist->fetchAll();
 print_r($tasks);
 ?>

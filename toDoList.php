@@ -37,6 +37,9 @@ $todos = $todolist->fetchAll();
     
 <?php
 
+$id;
+$listId;
+
 if(isset($_POST['create'])){
 
     $text = $_POST['input_text'];
@@ -61,6 +64,7 @@ if(isset($_POST['create'])){
 
 if(isset($_POST['tache'])){
     $id = $_POST['listId'];  
+    $listId = $id;
 }
 
 ?>
