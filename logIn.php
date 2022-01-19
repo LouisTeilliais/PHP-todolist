@@ -17,7 +17,6 @@
             <input type="email" placeholder="Email" name="email">
             <input type="password" placeholder="Password" name="pwd">
             <input class="B_login" type="submit" value="Login" name="submit">  
-            <!-- <input type="submit" value="Disconnect" name="disconnect">  -->
         </form>
          
     </div>
@@ -41,7 +40,7 @@
            
             if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
                 
-                echo "Connected";
+                // echo "Connected";
                 $connected = true;
 
                 setcookie(
@@ -58,26 +57,13 @@
             $error = "Wrong password or e-mail ! Please verify";
             echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
         }  
-        
+    header('Location:http://php-todolist/toDoList.php');
     }
 
-
-    if(isset($_POST['disconnect'])){
-
-        setcookie('user_session',"", [
-                'expires' => time() - 3600,
-            ]
-         );
-    }
-
-    // if (isset($_COOKIE['user_session'])){
-    //     header('Location:http://php-todolist/toDoList.php');
-    // }
- ?>
+?>
 
 
 </body>
-
 
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
 
