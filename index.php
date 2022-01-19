@@ -13,7 +13,6 @@
         <button onclick="window.location='signin.php'" >Sign in</button>
     </div>
 
-
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
 
 <?php require('template.php'); ?>
