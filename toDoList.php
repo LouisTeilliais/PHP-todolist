@@ -24,7 +24,7 @@ $todos = $todolist->fetchAll();
             <form class="message" action="delete.php" method="POST">
                 <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
                 <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
-                <input class="check" type="checkbox">
+                
                 <p><?php echo $todo['ToDoListName'] ?></p>
             </form>
             <form class="taches" action="tasks.php" method="POST">

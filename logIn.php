@@ -2,17 +2,15 @@
 <link rel="stylesheet" href="/CSS/index.css" type="text/css">
 <?php
 
-// $user_session = "123456789dzqgerdhgezs";
-
 // setcookie(
 //         'user_session',
-//         $user_session,
+//         "user_session",
 //         [
 //             'expires' => time() + 3600,
 //             'path' => "/",
 //         ]
 //     );
-// ?>
+?>
 
 <?php $title = 'PHP TO DO LIST'; ?>  <!-- Debut du template -->
 
@@ -33,16 +31,26 @@
     
     if(isset($_POST['submit'])){
 
-        $user_email = $_POST['email'];
-        $user_pwd = $_POST['pwd'];
-        
         $bdd_verif = 'SELECT UserEmail, UserPassword FROM user';
         $sql = $conn->prepare($bdd_verif);
         $sql->execute([]);
         $arr = $sql->fetchAll();
+        
+    
+        $user_email = $_POST['email'];
+        $user_pwd = password_verify($_POST['pwd'],$arr[0][1]);
+        
+        print_r($arr);
+        // print_r($arr[0][0]);
+        // echo "<br>";
+        // print_r($arr[0][1]);
 
-        print_r($arr[0][0].'\n') ;
-        print_r($arr[0][1]);
+        if ($user_email == $arr[0][0] && $user_pwd == $arr[0][1]){
+            echo "Connected";
+            // setcookie("user_session", );
+        }else {
+            echo "Wrong password or e-mail ! Please verify";
+        }
     }
     
 
