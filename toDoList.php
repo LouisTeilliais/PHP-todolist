@@ -9,6 +9,15 @@
 $todolist = $conn->prepare("SELECT * FROM todolist"); 
 $todolist->execute();
 $todos = $todolist->fetchAll();
+
+$ownerId;
+$user = $conn->prepare("SELECT UserId FROM user WHERE UserToken = ?");
+$user->execute([$_COOKIE['user_session']]);
+$result = $user->fetch(PDO::FETCH_ASSOC);
+foreach($result as $userId){
+    $ownerId = $userId;
+}
+
 ?>
 
 <div class="main-body">
@@ -47,8 +56,8 @@ if(isset($_POST['create'])){
         $message = "Please enter a value";
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     } else{
-        $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName) VALUE(?)");
-        $insert = $insertText->execute([$text]);
+        $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName, OwnerId) VALUE(?, ?)");
+        $insert = $insertText->execute([$text, $ownerId]);
 
         if($insert){
             header('Location: http://phptodolist/toDoList.php');
