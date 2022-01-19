@@ -18,7 +18,6 @@
             <input type="password" placeholder="Password" name="pwd">
             <input class="B_login" type="submit" value="Login" name="submit">  
         </form>
-         
     </div>
     <?php
     
@@ -36,29 +35,56 @@
         $user_pwd = $_POST['pwd'];
         $connected = false; 
 
-        for ( $i = 0; $i < count($arr); $i++){
-           
-            if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
-                
-                // echo "Connected";
-                $connected = true;
 
-                setcookie(
-                        'user_session',
-                        "$token",
-                        [
-                            'expires' => time() + 3600,
-                            'path' => "/",
-                        ]
-                );
+        $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
+        $sql = $conn->prepare($bdd_token);
+        $sql->execute([$user_email]);
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
+        foreach($result as $tokenvalue){
+            if($tokenvalue == null){
+                $bdd_token = 'UPDATE user SET UserToken = ? WHERE UserEmail = ?';
+                $sql = $conn->prepare($bdd_token);
+                $sql->execute([$token, $user_email]);
+            }
+        }
+
+        $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
+        $sql = $conn->prepare($bdd_token);
+        $sql->execute([$user_email]);
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
+        foreach($result as $tokenvalue){
+            for ( $i = 0; $i < count($arr); $i++){
+            
+                if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
+                    
+                    // echo "Connected";
+                    $connected = true;
+
+                    setcookie(
+                            'user_session',
+                            "$tokenvalue",
+                            [
+                                'expires' => time() + 3600,
+                                'path' => "/",
+                            ]
+                    );
+                }
             }
         }
         if ($connected == false)  {
             $error = "Wrong password or e-mail ! Please verify";
             echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
         }  
-    header('Location:http://php-todolist/toDoList.php');
+    header('Location:http://phptodolist/toDoList.php');
     }
+
+
+    // function GetTokenValue(){
+    //     $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
+    //     $sql = $conn->prepare($bdd_token);
+    //     $sql->execute([$user_email]);
+    //     return $sql;
+    // }
 
 ?>
 

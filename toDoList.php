@@ -21,6 +21,9 @@ $todos = $todolist->fetchAll();
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
+            <form>
+                <input class="collaborator" type="" />
+            </form>
             <form class="message" action="deleteToDoList.php" method="POST">
                 <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
                 <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
