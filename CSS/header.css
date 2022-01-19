@@ -1,14 +1,13 @@
 .navbar {
-    position: flex;
-    font-size: 200%;
-    justify-content: space-between;
-    background-color: green;
+  position: flex;
+  font-size: 200%;
+  justify-content: space-between;
+  background-color: green;
 }
 
-.links{
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 15%;
-    
+.links {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20%;
 }
