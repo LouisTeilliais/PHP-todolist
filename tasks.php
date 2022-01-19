@@ -1,4 +1,6 @@
-<?php require('db_connect.php'); ?>
+<?php require('db_connect.php'); 
+require('toDoList.php')
+?>
 
 <link rel="stylesheet" href="/CSS/tasks.css" type="text/css">
 <?php $title = 'Notre site web'; ?>  <!-- Debut du template -->
@@ -6,10 +8,13 @@
 <?php ob_start(); ?>
 
 <?php 
-$tasklist = $conn->prepare("SELECT * FROM task WHERE ToDoListId= 95"); 
-$tasklist->execute();
+$listId = $id;
+$tasklist = $conn->prepare("SELECT * FROM task WHERE ToDoListId =" . $listId . "\"");
+$tasklist->execute(array([]));
 $tasks = $tasklist->fetchAll();
+print_r($tasks);
 ?>
+
 
 <div class="task_page">
     <h1>TASKS</h1>
@@ -26,6 +31,7 @@ $tasks = $tasklist->fetchAll();
                     <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
                     <input class="check" type="checkbox">
                     <p><?php echo $task['TaskName'] ?></p>
+                    <p name="todoId"><?php echo $task['ToDoListId']  ?></p>
             </form>
         <?php } ?>
     </div>
@@ -36,21 +42,24 @@ $tasks = $tasklist->fetchAll();
 if(isset($_POST['add'])){
 
     $addtask = $_POST['input_task'];
+    // $addid = $_POST['todoId'];
 
     if(empty($addtask)){
         $message = "Please enter a task";
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-    } else{
+    }  else { 
+        
         $insertText = $conn->prepare("INSERT INTO task(TaskName, TaskStatut, ToDoListId) VALUE(?, ?, ?)");
-        $insertTask = $insertText->execute([$addtask, "active", 95]);
+        $insertTask = $insertText->execute([$addtask, "active", $listId]);
 
         if($insertTask){
             header('Location: http://php-todolist/tasks.php');
-        } else {
+        }else {
             header('Location: http://php-todolist/tasks.php');
             $message = "Error votre text n'a pas été envoyé !";
             echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
         }
+
     }
 }
 

@@ -28,6 +28,7 @@ $todos = $todolist->fetchAll();
                 <p><?php echo $todo['ToDoListName'] ?></p>
             </form>
             <form class="taches" action="tasks.php" method="POST">
+                <input class="id" type="hidden" name="listId" value="<?php echo $todo['ToDoListId'] ?>"/>
                 <button type="submit" class="btn" name="tache"> + Ajout tâches</button>
             </form>
         </div>
@@ -56,6 +57,11 @@ if(isset($_POST['create'])){
         }
     }
 } 
+
+
+if(isset($_POST['tache'])){
+    $id = $_POST['listId'];  
+}
 
 ?>
 
