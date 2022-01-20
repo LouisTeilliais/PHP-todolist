@@ -78,14 +78,6 @@
     header('Location:http://phptodolist/toDoList.php');
     }
 
-
-    // function GetTokenValue(){
-    //     $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
-    //     $sql = $conn->prepare($bdd_token);
-    //     $sql->execute([$user_email]);
-    //     return $sql;
-    // }
-
 ?>
 
 
