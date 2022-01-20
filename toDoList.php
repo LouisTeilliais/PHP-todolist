@@ -30,8 +30,8 @@ foreach($result as $userId){
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
-            <form>
-                <input class="collaborator" type="" />
+            <form id="collaborator" method="">
+                <input class="collaborator" type="submit" class="collaborator" name="colab"/>
             </form>
             <form class="message" action="deleteToDoList.php" method="POST">
                 <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
