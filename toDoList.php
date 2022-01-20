@@ -30,7 +30,8 @@ foreach($result as $userId){
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
-            <form id="collaborator" method="">
+            <form id="collaborator" method="POST" action="toDoList.php">
+                <input type="email" class="guestMail" name="guestMail" required/>
                 <input class="collaborator" type="submit" class="collaborator" name="colab"/>
             </form>
             <form class="message" action="deleteToDoList.php" method="POST">
