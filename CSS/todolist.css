@@ -1,0 +1,70 @@
+body {
+  background-color: lightgreen;
+}
+
+.add-post {
+  position: flex;
+  background-color: #229a17;
+  border-radius: 10px;
+  width: 60%;
+  height: 16%;
+  margin-bottom: 5%;
+  margin-left: 20%;
+}
+
+.add-post h1 {
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.add-post .btn {
+  width: 20%;
+  height: 30%;
+  border-radius: 10px 10px;
+  background-color: lightgreen;
+}
+
+.add-post input {
+  width: 65%;
+  height: 30%;
+  border-radius: 10px 10px;
+  margin-left: 5%;
+}
+
+.todo-item {
+  position: flex;
+  background-color: #229a17;
+  border-radius: 10px;
+  width: 50%;
+  height: 16%;
+  margin-left: 25%;
+  padding: 30px 10px 10px 10px;
+  margin-top: 5%;
+}
+
+.todo-item .message {
+  background-color: white;
+  border-radius: 10px;
+  width: 70%;
+  height: 80%;
+  margin-left: 15%;
+  border-top: 1px;
+}
+
+.todo-item p {
+  font-size: 150%;
+  text-align: center;
+  margin-top: 0%;
+}
+
+.todo-item .delete {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.todo-item .check {
+  position: relative;
+  margin-left: 110%;
+  transform: scale(3);
+  vertical-align: middle;
+}

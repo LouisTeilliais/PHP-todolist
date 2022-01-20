@@ -1,0 +1,53 @@
+body {
+  background-color: lightgreen;
+}
+
+#login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  background-color: #229a17;
+  margin: auto;
+  margin-top: 10%;
+  height: 50%;
+  border-radius: 35px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90%;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  width: 70%;
+  height: 20%;
+  background-color: lightgreen;
+  border-radius: 40px;
+  color: black;
+  font-size: x-large;
+  padding-left: 5%;
+}
+
+input::placeholder {
+  color: black;
+  font-size: x-large;
+  padding-left: 5%;
+}
+
+#login .B_login {
+  padding-left: 0%;
+}
+
+.submit {
+  background-color: lightgreen;
+  width: 45%;
+  height: 10%;
+  border-radius: 40px;
+  margin-bottom: 5%;
+  font-size: x-large;
+}
