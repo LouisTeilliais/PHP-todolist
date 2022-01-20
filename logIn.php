@@ -75,7 +75,7 @@
             $error = "Wrong password or e-mail ! Please verify";
             echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
         }  
-    header('Location:http://phptodolist/toDoList.php');
+    header('Location:http://php-todolist/toDoList.php');
     }
 
 ?>
