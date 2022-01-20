@@ -9,6 +9,15 @@
 $todolist = $conn->prepare("SELECT * FROM todolist"); 
 $todolist->execute();
 $todos = $todolist->fetchAll();
+
+$ownerId;
+$user = $conn->prepare("SELECT UserId FROM user WHERE UserToken = ?");
+$user->execute([$_COOKIE['user_session']]);
+$result = $user->fetch(PDO::FETCH_ASSOC);
+foreach($result as $userId){
+    $ownerId = $userId;
+}
+
 ?>
 
 <div class="main-body">
@@ -21,10 +30,13 @@ $todos = $todolist->fetchAll();
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
+            <form id="collaborator" method="">
+                <input class="collaborator" type="submit" class="collaborator" name="colab"/>
+            </form>
             <form class="message" action="deleteToDoList.php" method="POST">
                 <input class="id" type="hidden" name="id" value="<?php echo $todo['ToDoListId'] ?>"/>
                 <input class="delete" type="image" src="images/poubelle.png" height="30" width="30"/>
-                <input class="check" type="checkbox">
+                
                 <p><?php echo $todo['ToDoListName'] ?></p>
             </form>
             <form class="taches" action="tasks.php" method="POST">
@@ -48,13 +60,13 @@ if(isset($_POST['create'])){
         $message = "Please enter a value";
         echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
     } else{
-        $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName) VALUE(?)");
-        $insert = $insertText->execute([$text]);
+        $insertText = $conn->prepare("INSERT INTO todolist(ToDoListName, OwnerId) VALUE(?, ?)");
+        $insert = $insertText->execute([$text, $ownerId]);
 
         if($insert){
-            header('Location: http://php-todolist/toDoList.php');
+            header('Location: http://phptodolist/toDoList.php');
         } else {
-            header('Location: http://php-todolist/toDoList.php');
+            header('Location: http://phptodolist/toDoList.php');
             $message = "Error votre text n'a pas été envoyé !";
             echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
         }

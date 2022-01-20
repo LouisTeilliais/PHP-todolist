@@ -23,7 +23,7 @@
                 'expires' => time() - 3600,
             ]
         );
-        header('Location:http://php-todolist/');
+        header('Location:http://phptodolist/');
     }
     ?>
 

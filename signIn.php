@@ -35,6 +35,6 @@ if(isset($_POST['submit'])){
     }catch(PDOException $e){
         echo $e;
     }
-header('Location:http://php-todolist/logIn.php');
+header('Location:http://phptodolist/logIn.php');
 }
 
