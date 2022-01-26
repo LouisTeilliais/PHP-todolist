@@ -30,7 +30,8 @@ foreach($result as $userId){
     </div>
     <?php foreach($todos as $todo) { ?>
         <div class="todo-item">
-            <form id="collaborator" method="">
+            <form id="collaborator" method="POST" action="toDoList.php">
+                <input type="email" class="guestMail" name="guestMail" required/>
                 <input class="collaborator" type="submit" class="collaborator" name="colab"/>
             </form>
             <form class="message" action="deleteToDoList.php" method="POST">
@@ -48,9 +49,6 @@ foreach($result as $userId){
     
 <?php
 
-$id;
-$listId;
-
 if(isset($_POST['create'])){
 
     $text = $_POST['input_text'];
@@ -63,25 +61,19 @@ if(isset($_POST['create'])){
         $insert = $insertText->execute([$text, $ownerId]);
 
         if($insert){
-            header('Location: http://phptodolist/toDoList.php');
+            header('Location: http://php-todolist/toDoList.php');
         } else {
-            header('Location: http://phptodolist/toDoList.php');
+            header('Location: http://php-todolist/toDoList.php');
             $message = "Error votre text n'a pas été envoyé !";
             echo '<script type="text/javascript">window.alert("'.$message.'");</script>'; 
         }
     }
 } 
 
-if(isset($_POST['tache'])){
-    $id = $_POST['listId'];  
-    $listId = $id;
-}
-
 ?>
 
 <?php $content = ob_get_clean(); ?> <!-- Fin du template -->
 
 <?php require('template.php');?>
-
 
 

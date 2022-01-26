@@ -7,7 +7,7 @@
 
 <?php $title = 'PHP TO DO LIST'; ?>  <!-- Debut du template -->
 
-<?php ob_start();?>
+<?php ob_start();?>  
 
 <body>
 
@@ -48,34 +48,43 @@
             }
         }
 
-        $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
-        $sql = $conn->prepare($bdd_token);
-        $sql->execute([$user_email]);
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
-        foreach($result as $tokenvalue){
-            for ( $i = 0; $i < count($arr); $i++){
-            
-                if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
-                    
-                    // echo "Connected";
-                    $connected = true;
+        if (empty($user_email) || empty($user_pwd) ){
+            $empty = "Please fill all the gaps";
+            echo '<script type="text/javascript">window.alert("'.$empty.'");</script>';
+        }else{
 
-                    setcookie(
-                            'user_session',
-                            "$tokenvalue",
-                            [
-                                'expires' => time() + 3600,
-                                'path' => "/",
-                            ]
-                    );
+            $bdd_token = 'SELECT UserToken FROM user WHERE UserEmail = ?';
+            $sql = $conn->prepare($bdd_token);
+            $sql->execute([$user_email]);
+            $result = $sql->fetch(PDO::FETCH_ASSOC);
+            foreach($result as $tokenvalue){
+                for ( $i = 0; $i < count($arr); $i++){
+                
+                    if ($user_email == $arr[$i][0] && password_verify($user_pwd, $arr[$i][1])){
+                        
+                        // echo "Connected";
+                        $connected = true;
+
+                        setcookie(
+                                'user_session',
+                                "$tokenvalue",
+                                [
+                                    'expires' => time() + 3600,
+                                    'path' => "/",
+                                ]
+                        );
+                    }
                 }
             }
+            if ($connected == false)  {
+                $error = "Wrong password or e-mail ! Please verify";
+                echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
+            }else{
+                header('Location:http://php-todolist/toDoList.php');
+            }
+                
         }
-        if ($connected == false)  {
-            $error = "Wrong password or e-mail ! Please verify";
-            echo '<script type="text/javascript">window.alert("'.$error.'");</script>';
-        }  
-    header('Location:http://php-todolist/toDoList.php');
+
     }
 
 ?>
